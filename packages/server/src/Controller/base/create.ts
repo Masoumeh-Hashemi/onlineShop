@@ -1,29 +1,15 @@
 
- export async function create(ctx:any,collectionName:any) {
-     const body = ctx.request.body({type:"json"});
-     console.log("/////////////////")
-       if (!ctx.request.hasBody) {
-    ctx.response.status = 404;
-    ctx.response.body = {
-      success: false,
-      message: "No data provided",
-    };
-  }
+ import { Collection, DocumentType } from "https://deno.land/x/mongo@v0.12.1/ts/collection.ts"
+import { Context } from "https://deno.land/x/oak@v6.3.1/context.ts"
+
+ export async function create<T>(collectionName:Collection<T>,value:DocumentType<T>) {
 
   try{
-    console.group("inside create try", "===============")
-    console.log("inside create try")
-    console.groupEnd()
-    const json = await body.value;
-    const creation = await collectionName.insertOne({json})
-    ctx.response.body = {
-      success: true,
-      body : creation
-  };
-ctx.response.status = 201
+    const creation = await collectionName.insertOne(value)
+    return creation
   }
   catch(error){
-    ctx.response.body = null;
-    ctx.response.status = 500;
+    console.log(error)
+
   }
  } 
