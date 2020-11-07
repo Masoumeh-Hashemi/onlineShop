@@ -1,11 +1,11 @@
+import type{ Context } from 'https://deno.land/x/oak@v6.3.1/mod.ts';
 
 import { states } from './../../Schema/State.ts';
-import { Context } from "https://deno.land/x/oak/mod.ts";
+
 
 
 export const addState = async ({request,response}:Context)=>{
   const body = request.body({ type: "json" });
-  
   if (!request.hasBody) {
     response.status = 404;
     response.body = {
@@ -25,6 +25,8 @@ export const addState = async ({request,response}:Context)=>{
     response.status = 201;
 }
     catch(error){
+  
+      
     response.body = null;
     response.status = 500;
     

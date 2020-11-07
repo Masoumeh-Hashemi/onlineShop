@@ -7,7 +7,7 @@ export const isMaster: RouterMiddleware<{},IUserState> = async (
     next,
 )=>{
     const {user} = state;
-    try{
+    try{console.log(";lkjhg")
         if(
             user&&
             user.role&&
@@ -20,6 +20,7 @@ export const isMaster: RouterMiddleware<{},IUserState> = async (
             throwError("You dont have enough access right");
         }
     } catch (error){
+        
         response.status=404;
         response.body = {
             states:false,
