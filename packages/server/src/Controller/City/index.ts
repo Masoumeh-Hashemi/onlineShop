@@ -1,6 +1,7 @@
+
+import { Router } from "https://deno.land/x/oak@v6.3.1/mod.ts";
 import { addCity } from './addCity.ts';
 
-import type { Router } from "https://deno.land/x/oak/mod.ts"
 
 
 export const cityRoutes = (router:Router)=>{

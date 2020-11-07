@@ -5,7 +5,7 @@ import { ObjectId } from "https://deno.land/x/mongo@v0.12.1/ts/types.ts";
 export const getProduct = async (ctx:RouterContext)=>{
 
 try{
-    console.log("//////////////")
+   
    if(ctx.params.id){
 
    const id = ctx.params.id
